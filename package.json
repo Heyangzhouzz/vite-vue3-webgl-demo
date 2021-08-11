@@ -7,7 +7,12 @@
   },
   "dependencies": {
     "@types/gl-matrix": "^3.2.0",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
     "@vitejs/plugin-vue-jsx": "^1.1.6",
+    "eslint": "^7.32.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-vue": "^7.15.1",
     "gl-matrix": "^3.3.0",
     "vue": "^3.0.5"
   },
