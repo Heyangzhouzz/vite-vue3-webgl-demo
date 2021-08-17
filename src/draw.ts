@@ -1,5 +1,5 @@
 import {mat4} from 'gl-matrix';
-export default (gl: WebGLRenderingContext, programInfo: any, buffers: any, squareRotation = 0) => {
+export default (gl: WebGLRenderingContext, programInfo: any, buffers: any, cubeTexture:any, squareRotation = 0) => {
   gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
   gl.clearDepth(1.0); // Clear everything
   gl.enable(gl.DEPTH_TEST); // Enable depth testing
@@ -43,10 +43,25 @@ export default (gl: WebGLRenderingContext, programInfo: any, buffers: any, squar
       programInfo.attribLocations.vertexPosition);
 
 
-  gl.bindBuffer(gl.ARRAY_BUFFER, buffers.color);
-  gl.vertexAttribPointer( programInfo.attribLocations.vertexColor, 4, gl.FLOAT, false, 0, 0);
+  //   gl.bindBuffer(gl.ARRAY_BUFFER, buffers.color);
+  //   gl.vertexAttribPointer( programInfo.attribLocations.vertexColor, 4, gl.FLOAT, false, 0, 0);
+  //   gl.enableVertexAttribArray(
+  //       programInfo.attribLocations.vertexColor);
+
+  gl.bindBuffer(gl.ARRAY_BUFFER, buffers.textureBuffer);
+  gl.vertexAttribPointer(
+      programInfo.attribLocations.textureCoord,
+      2,
+      gl.FLOAT,
+      false,
+      0,
+      0);
   gl.enableVertexAttribArray(
-      programInfo.attribLocations.vertexColor);
+      programInfo.attribLocations.textureCoord);
+
+  gl.activeTexture(gl.TEXTURE0);
+  gl.bindTexture(gl.TEXTURE_2D, cubeTexture);
+  gl.uniform1i(gl.getUniformLocation(programInfo.program, 'uSampler'), 0);
 
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffers.indices);
 

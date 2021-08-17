@@ -2,6 +2,7 @@ import {defineComponent, onMounted, ref} from 'vue';
 import initShaderProgram from './loadShader';
 import initBuffers from './buffers';
 import dorw from './draw';
+import initTextures from './textures';
 
 export default defineComponent({
   name: 'App',
@@ -9,23 +10,25 @@ export default defineComponent({
     const glCanvas = ref<HTMLCanvasElement|null>(null);
     const vsSource = `
         attribute vec4 aVertexPosition;
-        attribute vec4 aVertexColor;
+        attribute vec2 aTextureCoord;
 
         uniform mat4 uModelViewMatrix;
         uniform mat4 uProjectionMatrix;
 
-        varying lowp vec4 vColor;
+        varying highp vec2 vTextureCoord;
 
         void main(void) {
           gl_Position = uProjectionMatrix* uModelViewMatrix * aVertexPosition;
-          vColor = aVertexColor;
+          vTextureCoord = aTextureCoord;
         }
     `;
     const fsSource = `
-      varying lowp vec4 vColor;
+      varying highp vec2 vTextureCoord;
 
+      uniform sampler2D uSampler;
+    
       void main(void) {
-        gl_FragColor = vColor;
+        gl_FragColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
       }
     `;
     let then = 0;
@@ -50,14 +53,17 @@ export default defineComponent({
         program: shaderProgram,
         attribLocations: {
           vertexPosition: gl.getAttribLocation(shaderProgram, 'aVertexPosition'),
-          vertexColor: gl.getAttribLocation(shaderProgram, 'aVertexColor'),
+          // vertexColor: gl.getAttribLocation(shaderProgram, 'aVertexColor'),
+          textureCoord: gl.getAttribLocation(shaderProgram, 'aTextureCoord'),
         },
         uniformLocations: {
           projectionMatrix: gl.getUniformLocation(shaderProgram, 'uProjectionMatrix'),
           modelViewMatrix: gl.getUniformLocation(shaderProgram, 'uModelViewMatrix'),
+          uSampler: gl.getUniformLocation(shaderProgram, 'uSampler'),
         },
       };
       const buffers = initBuffers(gl);
+      const cubeTexture = initTextures(gl);
 
       /** *
        * [Description]
@@ -72,7 +78,7 @@ export default defineComponent({
         then = now;
         squareRotation += deltaTime;
 
-        dorw(gl, programInfo, buffers, squareRotation);
+        dorw(gl, programInfo, buffers, cubeTexture, squareRotation);
 
         requestAnimationFrame(render);
       }
