@@ -18,8 +18,6 @@ export default function initShaderProgram(gl: WebGLRenderingContext, vsSource: s
   gl.attachShader(shaderProgram, vertexShader);
   gl.attachShader(shaderProgram, fragmentShader);
   gl.linkProgram(shaderProgram);
-  const vertexColorAttribute = gl.getAttribLocation(shaderProgram, 'aVertexColor');
-  gl.enableVertexAttribArray(vertexColorAttribute);
 
   // 创建失败， alert
   if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {

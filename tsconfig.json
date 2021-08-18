@@ -9,7 +9,11 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "types": ["vite/client"],
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "baseUrl": ".",
     "lib": ["esnext", "dom"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*.png"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*.png", "typings"]
 }
