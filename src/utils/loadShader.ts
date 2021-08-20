@@ -52,7 +52,8 @@ function loadShader(gl:WebGLRenderingContext, type:number, source:string) {
   // See if it compiled successfully
 
   if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    alert('An error occurred compiling the shaders: ' + gl.getShaderInfoLog(shader));
+    const typeName = gl.VERTEX_SHADER === type ? 'vsShader' : 'fsShader';
+    alert(`An error occurred compiling the ${typeName} shaders: ` + gl.getShaderInfoLog(shader));
     gl.deleteShader(shader);
     return null;
   }

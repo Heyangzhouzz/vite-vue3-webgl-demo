@@ -22,8 +22,6 @@ export default defineComponent({
       if (!gl) {
         return;
       }
-      gl.clearColor(0.0, 0.0, 0.0, 1.0);
-      gl.clear(gl.COLOR_BUFFER_BIT);
       const shaderProgram = initShaderProgram(gl, vsSource, fsSource);
       if (!shaderProgram) {
         return;
