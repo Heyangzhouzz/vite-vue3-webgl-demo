@@ -1,5 +1,6 @@
 import {defineComponent} from 'vue';
-import Cube from './packages/cubeDemo/Cube';
+import CubeNative from './packages/cubeDemo/Cube';
+import Cube from './packages/three/cube/Cube';
 import Rect from '@/packages/rect/Rect';
 
 export default defineComponent({
@@ -7,8 +8,12 @@ export default defineComponent({
   setup() {
     return ()=> (
       <div>
+        <p>webGl立方体:</p>
+        <CubeNative ></CubeNative>
+        <p>threejs立方体:</p>
         <Cube />
         <Rect></Rect>
+
       </div>
     );
   },
