@@ -10,12 +10,10 @@ export default defineComponent({
     const glCanvas = ref<HTMLCanvasElement|null>(null);
     const scene = new Scene();
 
-    {
-      const box = new BoxGeometry(100, 100, 100);
-      const material = new MeshLambertMaterial({color: 0x00eeff});
-      const mesh = new Mesh(box, material);
-      scene.add(mesh);
-    }
+    const box = new BoxGeometry(100, 100, 100);
+    const material = new MeshLambertMaterial({color: 0x00eeff});
+    const mesh = new Mesh(box, material);
+    scene.add(mesh);
 
     {
       const box = new SphereGeometry(60, 40, 40);
@@ -46,7 +44,16 @@ export default defineComponent({
       console.log(render);
       render.setClearColor(0xb9d3ff, 1);
 
-      render.render(scene, camera);
+      let then = 0;
+      const rederfn = (now:number) => {
+        now *= 0.001; // convert to seconds
+        const deltaTime = now - then;
+        then = now;
+        render.render(scene, camera);
+        mesh.rotateY(deltaTime);
+        requestAnimationFrame(rederfn);
+      };
+      requestAnimationFrame(rederfn);
     });
     return ()=> (
       <div>
