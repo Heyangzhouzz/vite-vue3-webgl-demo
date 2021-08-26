@@ -6,22 +6,24 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    
+    "element-plus": "^1.1.0-beta.5",
     "gl-matrix": "^3.3.0",
     "three": "^0.131.3",
     "vue": "^3.0.5"
   },
   "devDependencies": {
     "@types/gl-matrix": "^3.2.0",
+    "@types/node": "^16.7.1",
     "@types/three": "^0.131.0",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",
+    "@vitejs/plugin-vue": "^1.2.5",
     "@vitejs/plugin-vue-jsx": "^1.1.6",
+    "@vue/compiler-sfc": "^3.0.5",
     "eslint": "^7.32.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-vue": "^7.15.1",
-    "@vitejs/plugin-vue": "^1.2.5",
-    "@vue/compiler-sfc": "^3.0.5",
+    "stylus": "^0.54.8",
     "typescript": "^4.3.2",
     "vite": "^2.4.2",
     "vite-plugin-rsw": "^1.8.0",

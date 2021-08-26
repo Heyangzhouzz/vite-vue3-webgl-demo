@@ -1,0 +1,11 @@
+.container 
+  display flex
+  height 100vh
+  .main
+    flex 1
+    border 1px red solid
+  .aside
+    min-width 200px
+    padding 20px
+    span
+      background red
