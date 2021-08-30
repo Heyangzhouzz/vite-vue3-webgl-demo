@@ -4,6 +4,8 @@ import {
   Mesh, PointLight, OrthographicCamera, WebGLRenderer, SphereGeometry, MeshPhongMaterial,
 } from 'three';
 
+import {OrbitControls} from 'three-orbitcontrols-ts';
+
 export default defineComponent({
   name: 'Ball',
   setup() {
@@ -54,6 +56,7 @@ export default defineComponent({
         requestAnimationFrame(rederfn);
       };
       requestAnimationFrame(rederfn);
+      new OrbitControls(camera);
     });
     return ()=> (
       <div>
