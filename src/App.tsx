@@ -11,7 +11,6 @@ export default defineComponent({
   setup() {
     return ()=> (
       <div>
-        <p>webGl立方体:</p>
         {/* <CubeNative ></CubeNative>
         <p>threejs立方体:</p>
         <Cube /> */}

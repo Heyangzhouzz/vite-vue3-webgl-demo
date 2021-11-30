@@ -1,7 +1,8 @@
 import {defineComponent, onMounted, ref} from 'vue';
 import * as Three from 'three';
 
-import {OrbitControls} from 'three-orbitcontrols-ts';
+import {OrbitControls} from '@/utils/orbitControls';
+import style from './fullshot.module.stylus';
 
 import vrbg from 'assets/vr-model2.jpg';
 
@@ -29,30 +30,31 @@ export default defineComponent({
       const k = width/height;
 
       const camera=new Three.PerspectiveCamera(90, k, 1, 1000);
-      camera.position.set(0, 0, 10);
+      camera.position.set(0, 0, 50);
       camera.lookAt(new Three.Vector3(0, 0, 0));
 
-      const render = new Three.WebGLRenderer({canvas: glCanvas.value, alpha: true});
-      console.log(render);
+      const render = new Three.WebGLRenderer({canvas: glCanvas.value, alpha: true, antialias: true});
       render.setClearColor(0xb9d3ff, 1);
+      render.setPixelRatio(window.devicePixelRatio);
+      render.setSize(window.innerWidth, window.innerHeight);
 
-      let then = 0;
+
+      const controls = new OrbitControls(camera, render.domElement);
+      controls.enableZoom = true;
+      controls.maxDistance = 80;
+      controls.zoomSpeed = 4;
+      controls.autoRotate = true;
+
       const rederfn = (now:number) => {
-        now *= 0.0001;
-        const deltaTime = now - then;
-        then = now;
+        controls.update();
         render.render(scene, camera);
-        mesh.rotateY(deltaTime);
         requestAnimationFrame(rederfn);
       };
       requestAnimationFrame(rederfn);
-      const controls = new OrbitControls(camera);
-      controls.enableZoom = true;
-      controls.zoomSpeed = 1.0;
     });
     return ()=> (
-      <div>
-        <canvas ref={glCanvas} id="glcanvas" width="640" height="640"></canvas>
+      <div class={style.container}>
+        <canvas ref={glCanvas} class={style.canvas} id="glcanvas"></canvas>
       </div>
     );
   },

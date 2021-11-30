@@ -21,5 +21,6 @@ module.exports = {
       'extensions': ['jsx', 'tsx'],
       'shouldMatchCase': false,
     }],
+    'spaced-comment': 0,
   },
 };
