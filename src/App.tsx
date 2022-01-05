@@ -3,8 +3,9 @@ import {defineComponent} from 'vue';
 // import Cube from './packages/three/cube/Cube';
 // import Ball from './packages/three/ball/Ball';
 // import Rect from '@/packages/rect/Rect';
-import FullShot from '@/packages/three/fullshot/FullShot';
+// import FullShot from '@/packages/three/fullshot/FullShot';
 // import Drag from './packages/dragDemo/Drag';
+import Ellipse from './packages/zdog/ellipse/Ellipse';
 
 export default defineComponent({
   name: 'App',
@@ -17,7 +18,8 @@ export default defineComponent({
         {/* <Ball /> */}
         {/* <Rect></Rect> */}
         {/* <Drag></Drag> */}
-        <FullShot/>
+        {/* <FullShot/> */}
+        <Ellipse/>
       </div>
     );
   },

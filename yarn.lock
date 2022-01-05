@@ -357,6 +357,11 @@
   resolved "https://registry.npmjs.org/@types/three/-/three-0.131.0.tgz#98f59887b05f71e665cf2fbdf04e0e4ceb9f89b6"
   integrity sha512-4VCtsDi6mIId96GcGKG91e2Y6VwU2T0u/YB7vCFJh1kXik93arxn7l9tVZHo1LXOtgCJJDdC+e1fwf2Vu/4ySw==
 
+"@types/zdog@^1.1.2":
+  version "1.1.2"
+  resolved "http://10.2.62.21:8081/repository/npm_all/@types/zdog/-/zdog-1.1.2.tgz#f18cb79e4ad5ce69f5c332615e54e87ebb670ebe"
+  integrity sha1-8Yy3nkrVzmn1wzJhXlTofrtnDr4=
+
 "@typescript-eslint/eslint-plugin@^4.29.0":
   version "4.29.0"
   resolved "https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.29.0.tgz#b866c9cd193bfaba5e89bade0015629ebeb27996"
@@ -2176,3 +2181,8 @@ yallist@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
+
+zdog@^1.1.2:
+  version "1.1.2"
+  resolved "http://npm.corp.rs.com/zdog/-/zdog-1.1.2.tgz#e2193d9d2cfef30f516d4ba8f02d53b0b846fa53"
+  integrity sha1-4hk9nSz+8w9RbUuo8C1TsLhG+lM=

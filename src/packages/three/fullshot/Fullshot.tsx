@@ -32,6 +32,9 @@ export default defineComponent({
       const camera=new Three.PerspectiveCamera(90, k, 1, 1000);
       camera.position.set(0, 0, 50);
       camera.lookAt(new Three.Vector3(0, 0, 0));
+      const helper = new Three.CameraHelper(camera);
+      scene.add( helper );
+
 
       const render = new Three.WebGLRenderer({canvas: glCanvas.value, alpha: true, antialias: true});
       render.setClearColor(0xb9d3ff, 1);
